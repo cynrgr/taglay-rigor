@@ -1,53 +1,52 @@
 const articles = [
     {
-        name: "react-props-and-styling", // String
-        title: "Understanding React Props and Styling", //String
-        // List --> String
+        name: "the-great-gatsby",
+        title: "The Great Gatsby",
+        category: "Classic",
         content: [
-            "Props (short for properties) allow you to pass data between components. They are read-only and essential for component reusability.",
-            "Example:\nfunction Welcome(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}",
-            "React supports multiple styling approaches: inline styles, CSS files, CSS Modules, and styled-components.",
-            "Inline Style Example:\nconst style = { color: 'blue' };\n<p style={style}>Styled Text</p>"
+            "A story of the fabulously wealthy Jay Gatsby and his new love for the beautiful Daisy Buchanan.",
+            "Set in the Jazz Age on Long Island, near New York City, the novel depicts first-person narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.",
+            "The novel inspired a 2013 film adaptation starring Leonardo DiCaprio."
         ]
     },
     {
-        name: "react-functional-components",
-        title: "React Functional Components",
+        name: "dune",
+        title: "Dune",
+        category: "Sci-Fi",
         content: [
-            "Functional components are simple JavaScript functions that return JSX.",
-            "They are stateless by default but can use hooks like useState and useEffect.",
-            "Example:\nfunction HelloWorld() {\n  return <h1>Hello, World!</h1>;\n}",
-            "They are preferred in modern React apps for simplicity and performance."
+            "Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the 'spice' melange.",
+            "A drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for.",
+            "When House Atreides is betrayed, the destruction of Paul's family will set the boy on a journey toward a destiny greater than he could ever have imagined."
         ]
     },
     {
-        name: "react-component-lifecycle",
-        title: "React Component Lifecycle",
+        name: "pride-and-prejudice",
+        title: "Pride and Prejudice",
+        category: "Romance",
         content: [
-            "Class components have lifecycle methods: mounting, updating, unmounting.",
-            "Key methods include: componentDidMount, componentDidUpdate, componentWillUnmount.",
-            "Functional components use the useEffect hook to mimic lifecycle behavior.",
-            "Example:\nuseEffect(() => {\n  console.log('Mounted');\n  return () => console.log('Unmounted');\n}, []);"
+            "Since its immediate success in 1813, Pride and Prejudice has remained one of the most popular novels in the English language.",
+            "Jane Austen called this brilliant work 'her own darling child' and its vivacious heroine, Elizabeth Bennet, 'as delightful a creature as ever appeared in print.'",
+            "The romantic clash between the opinionated Elizabeth and her proud beau, Mr. Darcy, is a splendid performance of civilized sparring."
         ]
     },
     {
-        name: "react-routing-basics",
-        title: "React Router Basics",
+        name: "1984",
+        title: "1984",
+        category: "Dystopian",
         content: [
-            "React Router allows navigation between pages without a page reload.",
-            "Set up routes using BrowserRouter, Routes, and Route components.",
-            "Example:\n<Routes>\n  <Route path=\"/\" element={<Home />} />\n  <Route path=\"/about\" element={<About />} />\n</Routes>",
-            "Use Link component for navigation:\n<Link to=\"/about\">About</Link>"
+            "Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real.",
+            "Published in 1949, the book offers political satirist George Orwell's nightmare vision of a totalitarian, bureaucratic world and one poor stiff's attempt to find individuality.",
+            "The brilliance of the novel is Orwell's prescience of modern life—the ubiquity of television, the distortion of the language—and his ability to construct such a thorough version of hell."
         ]
     },
     {
-        name: "react-state-management",
-        title: "Managing State in React",
+        name: "the-hobbit",
+        title: "The Hobbit",
+        category: "Fantasy",
         content: [
-            "State allows components to keep track of dynamic data.",
-            "useState hook lets functional components manage state.",
-            "Example:\nconst [count, setCount] = useState(0);",
-            "Updating state triggers a re-render with the new value."
+            "Bilbo Baggins is a hobbit who enjoys a comfortable, unambitious life, rarely traveling further than the pantry of his hobbit-hole in Bag End.",
+            "But his contentment is disturbed when the wizard Gandalf and a company of thirteen dwarves arrive on his doorstep one day to whisk him away on an unexpected journey.",
+            "They plan to raid the treasure hoard of Smaug the Magnificent, a large and very dangerous dragon."
         ]
     }
 ];
