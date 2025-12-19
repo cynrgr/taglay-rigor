@@ -178,3 +178,31 @@ hr {
   border-top: 1px solid var(--border);
   margin: 32px 0;
 }
+
+/* SEARCH BAR STYLING */
+.search-container {
+  max-width: 500px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 0;
+  font-family: 'Lora', serif; /* Matches body font */
+  font-size: 1.2rem;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent); /* Rust red underline on focus */
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+  font-style: italic;
+}

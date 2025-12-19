@@ -2,42 +2,64 @@ import React from 'react';
 import '../styles/Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
 
 function Footer() {
     const currentYear = new Date().getFullYear();
     
     return (
-        <footer className="corporate-footer">
+        <footer className="library-footer">
+            <div className="footer-divider"></div>
+
             <div className="footer-content">
-                <div className="footer-section">
-                    <h4>About</h4>
-                    <p>
-                        Curating concise React know-how and tasteful UI ideas for builders who want
-                        to ship fast without looking generic.
+                
+                <div className="footer-section brand-section">
+                    <h4 className="footer-heading">Hearth & Pages.</h4>
+                    <p className="footer-text">
+                        A digital sanctuary for stories. We believe in the power of 
+                        slow reading, human curation, and the timeless beauty of 
+                        the written word.
                     </p>
                 </div>
+
                 <div className="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: cyrusrobles@company.com</p>
-                    <p>Phone: 09**-***-****</p>
+                    <h4 className="footer-heading">Correspondence</h4>
+                    <ul className="footer-contact-list">
+                        <li>
+                            <FontAwesomeIcon icon={faEnvelope} className="contact-icon" />
+                            <span>cynrgr@hearth&pages.com</span>
+                        </li>
+                        <li>
+                            <span className="label">Head Librarian:</span> Francyne Rigor
+                        </li>
+                        <li>
+                            <span className="label">Location:</span> Quezon City
+                        </li>
+                    </ul>
                 </div>
+
                 <div className="footer-section">
-                    <h4>Follow Us</h4>
+                    <h4 className="footer-heading">Literary Society</h4>
+                    <p className="footer-subtext">Join our reading circle.</p>
                     <div className="social-links">
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <FontAwesomeIcon icon={faLinkedin} />
                         </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                             <FontAwesomeIcon icon={faTwitter} />
                         </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <FontAwesomeIcon icon={faFacebook} />
                         </a>
                     </div>
                 </div>
             </div>
+
             <div className="footer-bottom">
-                    <p>&copy; {currentYear} Your Company Name. All rights reserved.</p>
+                <p>
+                    &copy; {currentYear} Hearth & Pages. All rights reserved.
+                </p>
+                <p className="faded">Designed with care.</p>
             </div>
         </footer>
     );

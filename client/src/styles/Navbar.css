@@ -1,74 +1,119 @@
-nav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1180px, 94vw);
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  z-index: 1000;
-}
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-.logo img {
-  width: 34px;
-  height: 34px;
-}
-
-nav ul {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  margin: 0 8px 0 auto;
-  padding: 0;
-}
-
-nav ul li a {
-  padding: 10px 14px;
-  border-radius: 12px;
-  color: var(--muted);
-  font-weight: 600;
-  transition: background-color 0.18s ease, color 0.18s ease;
-}
-
-nav ul li a:hover {
-  background: #f1f5f9;
-  color: var(--text);
-}
-
-@media (max-width: 720px) {
-  nav {
-    top: 0;
+/* Reset the floating "pill" style */
+.navbar {
     width: 100%;
-    border-radius: 0;
-    left: 0;
-    transform: none;
-    gap: 12px;
-  }
+    padding: 24px 0;
+    background-color: var(--bg); /* Blends with your paper background */
+    border-bottom: 1px solid var(--border); /* Subtle divider */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Add a slight blur for a modern but cozy feel when scrolling */
+    backdrop-filter: blur(8px);
+    background-color: rgba(249, 247, 241, 0.95); 
+}
 
-  nav ul {
-    margin-left: 0;
-    flex: 1 1 100%;
-    justify-content: center;
-    gap: 8px;
-  }
+.navbar-container {
+    width: min(1180px, 94vw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* THE LOGO: Typography as Image */
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-text:hover {
+    color: var(--accent); /* Rust red on hover */
+}
+
+/* Fancy ampersand styling */
+.ampersand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+    font-size: 1.1em; /* Slightly larger */
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--muted);
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+/* The "Underline" hover effect - looks like a pen underline */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--text);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* BUTTON ADJUSTMENT */
+/* This targets the button specifically inside the navbar to ensure it fits */
+.nav-actions button {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+    padding: 10px 24px;
+    border-radius: 4px;
+    background-color: var(--text); /* Charcoal button */
+    color: #fff;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.nav-actions button:hover {
+    background-color: var(--accent); /* Red on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* MOBILE RESPONSE */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nav-links {
+        gap: 20px;
+        font-size: 0.9rem;
+    }
 }
