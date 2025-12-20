@@ -1,18 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import articles from '../article-content.js';
 import NotFoundPage from './NotFoundPage';
 
 function ArticlePage() {
-  const { name } = useParams();
-  const article = articles.find((item) => item.name === name);
+  const { name } = useParams(); // 'name' here actually holds the ID because of your route path
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!article) {
-    return <NotFoundPage />;
-  }
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        // Fetch specific article by ID
+        const response = await fetch(`http://localhost:5000/api/articles/${name}`);
+        if (!response.ok) {
+           setLoading(false);
+           return;
+        }
+        const data = await response.json();
+        setArticle(data);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
 
-  const words = article.content.join(' ').split(' ').length;
-  const minutes = Math.max(2, Math.ceil(words / 70));
+    fetchArticle();
+  }, [name]);
+
+  if (loading) return <div style={{textAlign:'center', marginTop: '50px'}}>Loading story...</div>;
+  if (!article) return <NotFoundPage />;
+
+  // Calculate read time roughly
+  const words = article.content ? article.content.split(' ').length : 0;
+  const minutes = Math.max(1, Math.ceil(words / 200));
 
   return (
     <div className="page article-page">
@@ -20,27 +41,25 @@ function ArticlePage() {
         <p className="eyebrow">Article</p>
         <h1>{article.title}</h1>
         <div className="article-meta">
-          <span className="pill">React</span>
+          <span className="pill">Story</span>
           <span className="muted">{minutes} min read</span>
+          {article.user && <span className="muted" style={{marginLeft: '10px'}}>By {article.user.firstName} {article.user.lastName}</span>}
         </div>
-        <p className="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus egestas blandit
-          fringilla platea quam vel.
-        </p>
       </div>
 
       <div className="article-body">
-        {article.content.map((paragraph, idx) => (
-          <p key={`${article.name}-${idx}`}>{paragraph}</p>
-        ))}
-        <div className="card callout">
+        {/* We use white-space: pre-wrap so the line breaks from the textarea are preserved */}
+        <div style={{ whiteSpace: 'pre-wrap', fontFamily: 'Merriweather, serif', lineHeight: '1.8', color: '#333' }}>
+           {article.content}
+        </div>
+
+        <div className="card callout" style={{ marginTop: '50px' }}>
           <h3>Want another angle?</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit amet nisl eu condimentum
-            tincidunt pulvinar sed commodo.
+            Browse our full collection of stories and archives.
           </p>
           <Link to="/articles" className="button-link primary">
-            Browse more articles
+            Back to Collection
           </Link>
         </div>
       </div>

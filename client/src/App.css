@@ -210,3 +210,38 @@
     transform: rotate(0deg);
   }
 }
+
+.create-card {
+  width: 100% !important;
+  max-width: 1000px !important; /* Forces it to be wide */
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(92, 64, 51, 0.08);
+  border: 1px solid #efeae1;
+  box-sizing: border-box;
+  margin: 0 auto; /* Centers it */
+}
+
+.create-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.create-form input,
+.create-form textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background-color: #faf9f6;
+  resize: vertical;
+}
+
+.create-form textarea {
+  min-height: 400px; /* Makes the text box tall */
+}

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Lato:wght@400;700&display=swap');
+
+.register-wrapper {
+  min-height: 85vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fbf8f1; /* Warm background */
+  padding: 40px 20px;
+}
+
+.register-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px; /* Slightly wider than login to fit names */
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(92, 64, 51, 0.08);
+  border: 1px solid #efeae1;
+  text-align: center;
+}
+
+.register-header h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  color: #3e3e3e;
+  margin-bottom: 0.5rem;
+}
+
+.register-header p {
+  color: #7a7a7a;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* New: Side-by-side layout for names */
+.name-row {
+    display: flex;
+    gap: 15px;
+}
+.name-row .form-group {
+    flex: 1; /* Makes them split the width 50/50 */
+}
+
+.form-group {
+  margin-bottom: 1.2rem; /* Slightly tighter spacing than login */
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #5c4033;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  background-color: #faf9f6;
+  transition: all 0.3s ease;
+  box-sizing: border-box; 
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0088cc;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Lato', sans-serif;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #0077b3;
+}
+
+.error-message {
+  background-color: #fdf2f2;
+  color: #c53030;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #f8d7da;
+}
+
+.register-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.register-footer a {
+  color: #0088cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}

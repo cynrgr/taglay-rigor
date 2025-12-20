@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import articles from '../article-content';
 
 function HomePage() {
-  // Get the latest 3 books
-  const newArrivals = articles.slice(0, 3);
+  // State to hold real data from the database
+  const [recentArticles, setRecentArticles] = useState([]);
+
+  // 1. Fetch articles when page loads
+  useEffect(() => {
+      const fetchArticles = async () => {
+          try {
+              // Ensure port is 5000 (or 8000 depending on your server)
+              const response = await fetch('http://localhost:5000/api/articles');
+              const data = await response.json();
+
+              // 2. Sort by Date (Newest first) and grab the first 3
+              const sorted = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+              setRecentArticles(sorted.slice(0, 3)); 
+          } catch (error) {
+              console.error("Error fetching articles:", error);
+          }
+      };
+
+      fetchArticles();
+  }, []);
+
+  // Helper to format date nicely (e.g., "OCT 14 2025")
+  const formatDate = (dateString) => {
+      if (!dateString) return 'RECENT';
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options).toUpperCase();
+  };
 
   return (
     <div className="page">
       
-      {/* SECTION 1: THE READING NOOK (HERO) */}
+      {/* SECTION 1: THE READING NOOK (HERO) - (Kept exactly the same) */}
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">Established 2025</p>
@@ -29,10 +54,10 @@ function HomePage() {
             </Link>
           </div>
 
-          {/* Styled to look like a "Circulation Stamp" */}
           <div className="stats">
             <div className="stat">
-              <strong>{articles.length}k+</strong>
+              {/* Show actual count if available, or fallback */}
+              <strong>{recentArticles.length > 0 ? '100' : '0'}k+</strong>
               <span>Volumes</span>
             </div>
             <div className="stat">
@@ -49,10 +74,9 @@ function HomePage() {
         <div className="hero-visual">
           <div className="hero-panel">
             <img
-    // Keep this Unsplash link or ensure your local image is warm/cozy
-    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80"
-    alt="Cozy library bookshelf"
-  />
+              src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80"
+              alt="Cozy library bookshelf"
+            />
             <p className="muted" style={{ fontStyle: 'italic', marginTop: '10px' }}>
               "I have always imagined that Paradise will be a kind of library." — Jorge Luis Borges
             </p>
@@ -60,7 +84,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2: THE CARD CATALOG (GENRES) */}
+      {/* SECTION 2: THE CARD CATALOG (GENRES) - (Kept exactly the same) */}
       <section>
         <div className="section-heading">
           <div>
@@ -71,34 +95,20 @@ function HomePage() {
         </div>
         
         <div className="feature-grid">
-          {/* Card 1 */}
           <div className="feature-card">
             <div className="feature-icon">I</div>
             <h3>Fiction & Prose</h3>
-            <p>
-              Narratives that reflect the human experience. From tragic romances 
-              to epic adventures.
-            </p>
+            <p>Narratives that reflect the human experience. From tragic romances to epic adventures.</p>
           </div>
-
-          {/* Card 2 */}
           <div className="feature-card">
             <div className="feature-icon">II</div>
             <h3>Historical Records</h3>
-            <p>
-              Non-fiction accounts of the past. Biographies, war logs, and 
-              cultural studies.
-            </p>
+            <p>Non-fiction accounts of the past. Biographies, war logs, and cultural studies.</p>
           </div>
-
-          {/* Card 3 */}
           <div className="feature-card">
             <div className="feature-icon">III</div>
             <h3>Speculative Arts</h3>
-            <p>
-              Science fiction and fantasy. Explore worlds that exist only 
-              in the imagination.
-            </p>
+            <p>Science fiction and fantasy. Explore worlds that exist only in the imagination.</p>
           </div>
         </div>
       </section>
@@ -111,7 +121,7 @@ function HomePage() {
         <p>— George R.R. Martin</p>
       </section>
 
-      {/* SECTION 4: NEW ON THE SHELF */}
+      {/* SECTION 4: NEW ON THE SHELF (UPDATED TO BE DYNAMIC) */}
       <section className="articles-section">
         <div className="section-heading">
           <div>
@@ -124,28 +134,32 @@ function HomePage() {
         </div>
 
         <div className="article-preview-grid">
-          {newArrivals.map((article) => (
-            <div key={article.name} className="article-preview">
-              <div className="article-meta">
-                <span className="pill">{article.category || 'General Collection'}</span>
-                {/* Simulated "Date Stamped" look */}
-                <span className="muted" style={{ fontFamily: 'monospace' }}>
-                  OCT 14 2025
-                </span>
+          {recentArticles.length === 0 ? (
+             <p className="muted">No new arrivals yet. Be the first to publish!</p>
+          ) : (
+            recentArticles.map((article) => (
+              <div key={article._id} className="article-preview">
+                <div className="article-meta">
+                  <span className="pill">NEW ARRIVAL</span>
+                  {/* Dynamic Date */}
+                  <span className="muted" style={{ fontFamily: 'monospace' }}>
+                    {formatDate(article.createdAt)}
+                  </span>
+                </div>
+                
+                <h3>{article.title}</h3>
+                
+                {/* Dynamic Content Snippet */}
+                <p style={{ fontFamily: '"Lora", serif', fontSize: '1.1rem' }}>
+                  {article.content ? article.content.substring(0, 120) + '...' : 'No preview available.'}
+                </p>
+                
+                <Link to={`/articles/${article._id}`} className="button-link secondary" style={{border: 'none', paddingLeft: 0, justifyContent: 'flex-start'}}>
+                  Checkout Title &rarr;
+                </Link>
               </div>
-              
-              <h3>{article.title}</h3>
-              
-              {/* Using a serif font for the excerpt to look like book text */}
-              <p style={{ fontFamily: '"Lora", serif', fontSize: '1.1rem' }}>
-                {article.content[0].substring(0, 120)}...
-              </p>
-              
-              <Link to={`/articles/${article.name}`} className="button-link secondary" style={{border: 'none', paddingLeft: 0, justifyContent: 'flex-start'}}>
-                Checkout Title &rarr;
-              </Link>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
 

@@ -1,22 +1,20 @@
-/* 1. Import Classic "Booky" Fonts: Playfair Display (Headings) & Lora (Body) */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* THEME: Dark Academia / Bookstore */
-  --bg: #F9F7F1;         /* Warm Cream (Paper) */
-  --surface: #FFFEFC;    /* Bright White (Pages) */
+  --bg: #F9F7F1;        
+  --surface: #FFFEFC;   
   
-  --text: #2C2420;       /* Dark Charcoal/Brown (Ink) - softer than black */
-  --muted: #6E645F;      /* Faded Ink */
+  --text: #2C2420;      
+  --muted: #6E645F;     
   
-  /* ACCENTS */
-  --accent: #8C3f3F;     /* Rust/Burgundy (Vintage Book Cover) */
+ 
+  --accent: #8C3f3F;     
   --accent-strong: #6B2E2E; 
-  --highlight: #D4A373;  /* Gold/Leather for small details */
+  --highlight: #D4A373;  
   
-  --border: #E6DBCE;     /* Tan border */
-  --shadow: 0 4px 20px rgba(44, 36, 32, 0.08); /* Softer, warmer shadow */
-  --radius: 6px;         /* Tighter corners (like a book spine, not a bubble) */
+  --border: #E6DBCE;     
+  --shadow: 0 4px 20px rgba(44, 36, 32, 0.08); 
+  --radius: 6px;         
 }
 
 * {
@@ -27,10 +25,10 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg);
-  /* Subtle paper grain texture via noise or just a clean wash */
+ 
   background-image: linear-gradient(to bottom, #F9F7F1 0%, #F0EBE0 100%); 
   color: var(--text);
-  font-family: 'Lora', serif; /* Serif for body text is key for this vibe */
+  font-family: 'Lora', serif; 
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -48,7 +46,7 @@ a:hover {
 h1, h2, h3, h4 {
   margin: 0 0 16px;
   color: var(--text);
-  font-family: 'Playfair Display', serif; /* High-contrast serif for headers */
+  font-family: 'Playfair Display', serif; 
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -62,7 +60,7 @@ p {
 img {
   max-width: 100%;
   display: block;
-  border-radius: 4px; /* Sharper corners */
+  border-radius: 4px; 
 }
 
 .page {
@@ -74,7 +72,7 @@ img {
   gap: 64px;
 }
 
-/* CARDS: Look like index cards or thick paper */
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -83,7 +81,7 @@ img {
   padding: 24px;
 }
 
-/* EYEBROW: Small tag text above headers */
+
 .eyebrow {
   display: inline-flex;
   text-transform: uppercase;
@@ -93,25 +91,25 @@ img {
   font-weight: 700;
   margin-bottom: 12px;
   font-family: 'Playfair Display', serif;
-  border-bottom: 1px solid var(--accent); /* Underline style */
+  border-bottom: 1px solid var(--accent); 
   padding-bottom: 2px;
 }
 
 .lead {
-  font-size: 1.15rem; /* Slightly larger for reading comfort */
+  font-size: 1.15rem; 
   color: var(--muted);
   font-weight: 400;
-  max-width: 60ch; /* Optimal reading length */
+  max-width: 60ch; 
 }
 
-/* PILLS: Tags/Categories */
+
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 4px 10px;
   border-radius: 4px;
-  background: #EAE4DA; /* Tan background */
+  background: #EAE4DA; 
   color: var(--text);
   font-weight: 600;
   font-size: 0.8rem;
@@ -120,18 +118,17 @@ img {
   border: 1px solid rgba(0,0,0,0.05);
 }
 
-/* BUTTONS: Classical styling */
 .button-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   border: 1px solid transparent;
-  border-radius: 4px; /* Boxy */
+  border-radius: 4px; 
   padding: 12px 24px;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-style: italic; /* Adds that editorial flair */
+  font-style: italic;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -151,7 +148,7 @@ img {
 .button-link.secondary {
   background: transparent;
   color: var(--text);
-  border: 1px solid var(--text); /* Outline style */
+  border: 1px solid var(--text);
 }
 
 .button-link.secondary:hover {
@@ -164,7 +161,7 @@ img {
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  border-bottom: 2px solid var(--border); /* Visual separator */
+  border-bottom: 2px solid var(--border); 
   padding-bottom: 16px;
   margin-bottom: 32px;
 }
@@ -179,7 +176,7 @@ hr {
   margin: 32px 0;
 }
 
-/* SEARCH BAR STYLING */
+
 .search-container {
   max-width: 500px;
 }
@@ -187,7 +184,7 @@ hr {
 .search-input {
   width: 100%;
   padding: 16px 0;
-  font-family: 'Lora', serif; /* Matches body font */
+  font-family: 'Lora', serif; 
   font-size: 1.2rem;
   color: var(--text);
   background: transparent;
@@ -198,7 +195,7 @@ hr {
 
 .search-input:focus {
   outline: none;
-  border-color: var(--accent); /* Rust red underline on focus */
+  border-color: var(--accent);
 }
 
 .search-input::placeholder {

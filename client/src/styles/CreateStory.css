@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Lato:wght@400;700&display=swap');
+
+.create-wrapper {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fbf8f1;
+  padding: 40px 20px;
+}
+
+.create-card {
+  background-color: #ffffff;
+  /* KEY CHANGE: Making it wide */
+  width: 100%; 
+  max-width: 1000px; /* This makes the box wide */
+  
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(92, 64, 51, 0.08);
+  border: 1px solid #efeae1;
+  box-sizing: border-box; /* Ensures padding doesn't mess up width */
+}
+
+.create-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.create-header h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.2rem;
+  color: #3e3e3e;
+  margin-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #5c4033;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-family: 'Merriweather', serif;
+  background-color: #faf9f6;
+  transition: all 0.3s ease;
+  box-sizing: border-box; 
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.form-group textarea {
+    min-height: 400px; /* Makes the content box tall */
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
